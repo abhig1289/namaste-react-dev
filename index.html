@@ -7,6 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>react</h1>
+    <div id="root"></div>
+    <script>
+    const heading=document.createElement("h1");
+    heading.innerHTML='ok mastaru'
+    const root = document.getElementById('root')
+    root.appendChild(heading);
+    </script>
 </body>
 </html>
