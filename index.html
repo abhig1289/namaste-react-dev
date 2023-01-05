@@ -7,9 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="header"><h1>heading</h1></div>
+    <!-- <div id="header"><h1>heading</h1></div> -->
     <div id="root">Not rendered</div>
-    <div id="footer"><h1>footer</h1></div>
+    <!-- <div id="footer"><h1>footer</h1></div> -->
+    <div id="container">
+        <!-- <div>
+            Heading 1  
+        </div>
+        <div>Heading 2</div> -->
+    </div>
     <!-- javascript -->
     <!-- <script>
     const heading=document.createElement("h1");
@@ -29,14 +35,16 @@
     const heading1 = React.createElement("h1",{
         id:'title1',
         className:'title1',
-    },"Namaste Abhilash 1");
+    },"Namaste Abhilash 1"); 
     const heading2 = React.createElement("h1",{
         id:'title2',
         className:'title2',
     },"Namaste Abhilash 2");
+    const container =React.createElement("div",{id:"container"},[heading1,heading2]);
     const root = ReactDOM.createRoot(document.getElementById("root"));
     // passing the react element inside the root
-    root.render(heading)
+    // root.render(heading)
+    root.render(container)
     </script>
 </body>
 </html>
