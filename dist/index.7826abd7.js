@@ -2503,11 +2503,11 @@ process.umask = function() {
     return 0;
 };
 
-},{}],"aFqiG":[function(require,module,exports) {
+},{}],"lyZ4E":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
-var HMR_SECURE = true;
+var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
 module.bundle.HMR_BUNDLE_ID = "f8a609f57826abd7";
 "use strict";
@@ -2930,12 +2930,14 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _client = require("react-dom/client");
 var _clientDefault = parcelHelpers.interopDefault(_client);
-// HMR- Hot Module Replacement 
+// HMR- Hot Module Replacement
+// Created a Server
 // File watch algorithm -C++
 // Bundling
 // minify
 // cleaning our coding
-// Dev and Production build
+// Dev and Production
+// Tree Shaking=removing unwanted code
 // Super fast build algorithm
 // Image Optimization
 //Caching by development
@@ -2945,23 +2947,27 @@ var _clientDefault = parcelHelpers.interopDefault(_client);
 //  Port number
 // Consistent Hashing algoritm
 // Zero config
-// 
-// 
+//
+//
 // Transitive dependencies
 const heading = /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
     id: "title",
-    className: "title"
+    className: "title",
+    key: "h1"
 }, "Namaste Abhilash");
 const heading1 = /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
     id: "title1",
-    className: "title1"
+    className: "title1",
+    key: "h2"
 }, "Namaste Abhilash 1");
 const heading2 = /*#__PURE__*/ (0, _reactDefault.default).createElement("h1", {
     id: "title2",
-    className: "title2"
+    className: "title2",
+    key: "h3"
 }, "Namaste Abhilash g 2");
 const container = /*#__PURE__*/ (0, _reactDefault.default).createElement("div", {
-    id: "container"
+    id: "container",
+    key: "head"
 }, [
     heading1,
     heading2
@@ -34458,6 +34464,6 @@ module.exports = function restructRule(ast) {
 },{"44fed29cfecb542a":"isCc7","e070d06cef68f1d8":"59FZW"}],"4cvzd":[function(require,module,exports) {
 module.exports = JSON.parse('{"name":"csso","version":"4.2.0","description":"CSS minifier with structural optimisations","homepage":"https://github.com/css/csso","author":"Sergey Kryzhanovsky <skryzhanovsky@ya.ru> (https://github.com/afelix)","maintainers":[{"name":"Roman Dvornov","email":"rdvornov@gmail.com","github-username":"lahmatiy"}],"license":"MIT","repository":"css/csso","bugs":{"url":"https://github.com/css/csso/issues"},"keywords":["css","compress","minifier","minify","optimise","optimisation","csstree"],"main":"./lib/index","scripts":{"test":"mocha --reporter dot","lint":"eslint lib test","lint-and-test":"npm run lint && npm test","build":"rollup --config && terser dist/csso.js --compress --mangle -o dist/csso.min.js","coverage":"nyc npm test","coveralls":"nyc report --reporter=text-lcov | coveralls","travis":"nyc npm run lint-and-test && npm run coveralls","hydrogen":"node --trace-hydrogen --trace-phase=Z --trace-deopt --code-comments --hydrogen-track-positions --redirect-code-traces --redirect-code-traces-to=code.asm --trace_hydrogen_file=code.cfg --print-opt-code bin/csso --stat -o /dev/null","prepublishOnly":"npm run build"},"dependencies":{"css-tree":"^1.1.2"},"browser":{"css-tree":"css-tree/dist/csstree.min.js"},"devDependencies":{"@rollup/plugin-commonjs":"^11.0.1","@rollup/plugin-json":"^4.0.1","@rollup/plugin-node-resolve":"^7.0.0","coveralls":"^3.0.11","eslint":"^6.8.0","mocha":"^7.1.1","nyc":"^15.0.0","rollup":"^1.29.0","source-map":"^0.6.1","terser":"^4.6.3"},"engines":{"node":">=8.0.0"},"files":["dist","lib"]}');
 
-},{}]},["1xC6H","aFqiG","2Ew96"], "2Ew96", "parcelRequire104d")
+},{}]},["1xC6H","lyZ4E","2Ew96"], "2Ew96", "parcelRequire104d")
 
 //# sourceMappingURL=index.7826abd7.js.map
