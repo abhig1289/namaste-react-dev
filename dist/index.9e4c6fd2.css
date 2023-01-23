@@ -2,4 +2,51 @@
   background-color: red;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  height: 70px;
+  background-color: #4c6df2;
+  justify-content: space-around;
+  align-items: center;
+  padding: 25px;
+  display: flex;
+}
+
+#logo, #icon {
+  cursor: pointer;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.logo, .icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.icon {
+  color: #fff;
+}
+
+#search {
+  flex-grow: 2;
+}
+
+.search {
+  width: 100%;
+  border: 2px solid #0000;
+  border-radius: 2rem;
+  outline: none;
+  padding: .5rem 1rem;
+}
+
+.search:focus {
+  border: 2px solid #c65e7d;
+  transition: all .5s ease-in;
+}
+
 /*# sourceMappingURL=index.9e4c6fd2.css.map */
