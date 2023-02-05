@@ -1549,33 +1549,7 @@ const Footer = () => {
 };
 
 const AppLayout = () => {
-  const [data1,setData1]=useState({})
-  
-// async function getRestaurantsCardsData(){
-//   // await axios.get('https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4660807&lng=78.36573419999999&page_type=DESKTOP_WEB_LISTING')
-//   // .then(res=>console.log(res?.data))
-//   // .catch(err=>console.log(err))
 
-
-//   const data= await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4660807&lng=78.36573419999999&page_type=DESKTOP_WEB_LISTING')
-// const json=await data.json();
-// console.log(json)
-// }
-
-useEffect(()=>{
-  async function getRestaurantsCardsData(){
-    // await axios.get('https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4660807&lng=78.36573419999999&page_type=DESKTOP_WEB_LISTING')
-    // .then(res=>console.log(res?.data))
-    // .catch(err=>console.log(err))
-  
-  
-    const data= await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4660807&lng=78.36573419999999&page_type=DESKTOP_WEB_LISTING')
-  const json=await data.json();
-  console.log(json)
-  setData1(json)
-  }},
-  getRestaurantsCardsData(),
-[])
 
   return (
     //React.Fragment === component exported by react <React.Fragment/>===<></>
@@ -1583,7 +1557,6 @@ useEffect(()=>{
     <React.Fragment>
       <HeaderComponent />
       <Body />
-      {data1}
       <Footer />
     </React.Fragment>
   );
