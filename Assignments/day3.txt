@@ -1,4 +1,9 @@
 Chapter 3: Laying the foundation
+Session #3 of Namaste React course:
+Topics covered in this session:
+Bable
+JSX
+Writing functional components
 
 HW:
 - Read about dependencies, Dev-dependencies, global dependencies.

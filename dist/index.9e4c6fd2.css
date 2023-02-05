@@ -2,51 +2,41 @@
   background-color: red;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .header {
-  height: 70px;
-  background-color: #4c6df2;
-  justify-content: space-around;
-  align-items: center;
-  padding: 25px;
+  border: 1px solid #000;
+  justify-content: space-between;
+  margin: 10px;
   display: flex;
 }
 
-#logo, #icon {
-  cursor: pointer;
-  text-align: center;
-  flex-grow: 1;
+.nav-items > ul {
+  list-style-type: none;
+  display: flex;
 }
 
-.logo, .icon {
-  width: 2rem;
-  height: 2rem;
+.nav-items > ul > li {
+  padding: 10px;
 }
 
-.icon {
-  color: #fff;
+.logo {
+  height: 100px;
+  width: 140px;
 }
 
-#search {
-  flex-grow: 2;
+.card {
+  width: 200px;
+  border: 1px solid #000;
+  margin: 10px;
+  padding: 10px;
 }
 
-.search {
+.card > img {
   width: 100%;
-  border: 2px solid #0000;
-  border-radius: 2rem;
-  outline: none;
-  padding: .5rem 1rem;
 }
 
-.search:focus {
-  border: 2px solid #c65e7d;
-  transition: all .5s ease-in;
+.restaurant-list {
+  flex-wrap: wrap;
+  display: flex;
 }
 
 /*# sourceMappingURL=index.9e4c6fd2.css.map */
