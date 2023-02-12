@@ -2,7 +2,8 @@ import axios from "axios";
 import { minify } from "csso";
 import React, { useState,useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./../index.css";
+import Title from "./components/Title";
 // import Header from "./Header";
 // HMR- Hot Module Replacement
 // Created a Server
@@ -123,18 +124,7 @@ const jsxHeading = (
 //     Function aite call cheyali
 //   </h1>
 // );
-const Title = () => (
-  //   <h1 id="title" key="title key11">
-  //  Daaaa Tinu
-  //   </h1>
-  <a href="/">
-    <img
-      src="http://wirally.com/wp-content/uploads/2019/01/3-daa-tinu.jpg"
-      alt="logo"
-      className="logo"
-    />
-  </a>
-);
+
 // React Component
 // Class Component
 // Functional Component
