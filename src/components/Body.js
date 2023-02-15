@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { RestauranList } from "../constants";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
@@ -6,6 +7,7 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   // what are react hooks , state ,useState
   //search texxt is a local state variable
+  //Dont write useState inside a If condition or for loop
   const [searchInput, setSearchInput] = useState(""); // to create state variables returns=[variable,setfunction to update the state variable]
   const [searchClicked, setSearchClicked] = useState("false");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -73,11 +75,17 @@ const Body = () => {
           // restaurant={RestauranList[0]}
           {...RestauranList[0].data}
           /> */}
-        {filteredRestaurants.length===0 ? <> No restaurant matches the search....!!! </> : filteredRestaurants.map((restaurant, index) => {
-          return (
-            <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
-          );
-        })}
+        {filteredRestaurants.length === 0 ? (
+          <> No restaurant matches the search....!!! </>
+        ) : (
+          filteredRestaurants.map((restaurant, index) => {
+            return (
+              <Link to={"/restaurant/" + restaurant.data.id} key={restaurant.data.id}>
+                <RestaurantCard {...restaurant.data}  />
+              </Link>
+            );
+          })
+        )}
         {/* <RestaurantCard restaurant={RestauranList[1]}/> */}
       </div>
     </>

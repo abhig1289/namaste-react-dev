@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Logo from "../assets/img/wildwest.jpg";
 
 const LoggedInUser = () => {
   //API call to authente
@@ -10,7 +12,8 @@ const Title = () => (
   //   </h1>
   <a href="/">
     <img
-      src="http://wirally.com/wp-content/uploads/2019/01/3-daa-tinu.jpg"
+      src={Logo}
+      // src="http://wirally.com/wp-content/uploads/2019/01/3-daa-tinu.jpg"
       alt="logo"
       className="logo"
     />
@@ -18,7 +21,7 @@ const Title = () => (
 );
 const HeaderComponent = () => {
   const [titleName, setTitleName] = useState("Daa Tinu");
-  const [isLoggedIn,setIsLoggedIn]=useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   // console.log("render")
   return (
     <div className="header">
@@ -34,13 +37,25 @@ const HeaderComponent = () => {
         <h1>{titleName}</h1> */}
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+          {" "}
+          <li>
+            <Link to="/">Home</Link>
+          </li>{" "}
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+          <Link to="/contact">
+            Contact</Link>
+            </li>
           <li>Cart</li>
         </ul>
       </div>
-      {isLoggedIn ? <button onClick={()=>setIsLoggedIn(false)}>login</button> : <button onClick={()=>setIsLoggedIn(true)}>logout</button>}
+      {isLoggedIn ? (
+        <button onClick={() => setIsLoggedIn(false)}>login</button>
+      ) : (
+        <button onClick={() => setIsLoggedIn(true)}>logout</button>
+      )}
     </div>
   );
 };

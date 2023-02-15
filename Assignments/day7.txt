@@ -1,0 +1,111 @@
+CHAPTER-7
+----------
+1. What are various ways to add images into our App?Explain with examples?
+A. Using the import Keyword
+-------------------------
+You can import a file right in a JavaScript module. This tells a webpack to include 
+that file in the bundle. Your code should look like this:
+
+import React from 'react';
+import house from './house.png';
+
+const House = ()=>{
+return(
+<div className="App">
+<img src={house} alt="House image height={200} width={200}/>
+</div>
+)
+}
+export default House;
+
+Using the require Keyword:
+--------------------------
+We can also use the require keyword to load the images into your component. In that 
+case, your code should look like this:
+
+import React from 'react';
+
+const House = ()=>{
+return(
+<div className="App">
+<img src={require('./house.jpg')} alt="House image"/>
+</div>
+)
+}
+export default House;
+
+require can also be used for including audio, video, or document files in your project.
+The most common types are .mp3, .wav, .mp4, .mov, .html, and .pdf.
+
+Adding SVGs
+------------
+One way to add SVG files is described above. You can also import SVGs directly as React 
+components. You can use either of the two approaches. In your code, it would look like 
+this:
+import React from 'react';
+import House from './house.png';
+
+const House = ()=>{
+return(
+<div className="App">
+<House/>
+</div>
+)
+}
+export default House;
+
+This is handy if you don’t want to load the SVG as a separate file. Don’t forget the 
+curly braces in the import! The ReactComponent import name is significant and tells Create
+React App that you want a React component that renders an SVG rather than its filename.
+
+Adding Network Images:
+----------------------
+If you are loading images from the network, then it's a pretty straightforward approach.
+In your code, it would look like this:
+
+import React from 'react';
+
+const House = ()=>{
+return(
+<div className="App">
+<img src="url"/>
+</div>
+)
+}
+export default House;
+-----------------------------------------------------------------------------------------
+2. What will happen if we do console.log(useState())?
+A. Here on console we will get an array of length 2 .
+first one is the default value passed to useState and second is a function().
+
+3. How will useEffect behave if don't add a dependency array?
+A.	If we don't pass a dependency array in useEffect hook, then according to it's default
+behaviour it will call the effect (callback funtion passed to useEffect) on every 
+render of the component in which we are using useEffect. And an empty array passed to 
+useEffect will reset its default behaviour and it will call effect only once after The
+initial render of component. 
+
+4. What is SPA?
+A.	SPA stands for single page application. SPA is a implemention of web application that 
+loads a single webdocument, and then updates the body content of that single document using
+javascript apis such as fetch and XMLHttpRequest.
+This therefore allow users to use website without loading whole new page on very 
+interaction or routes.
+--------------------------------OR----------------------------
+Single Page Application (SPA) is a web application that dynamically updates the 
+webpage with data from web server without reloading/refreshing the entire page. 
+All the HTML, CSS, JS are retrieved in the initial load and other data/resources 
+can be loaded dynamically whenever required. An SPA is sometimes referred to as a 
+single-page interface (SPI).
+
+5 - What is the differnce between Client side routing and Server side routing?
+A.	In Server side routing , when a user click on a link then browser makes an http request
+for that pageon server now server process the request and send a response usually a html 
+page, now bowser discard the old page and loads the new page.
+
+In client side routing , when use click on a link , now client side code catches the event look for the
+the like if the url is not an external then it prevents the browser to make  request.
+then routing library changes the url in brwoser with help of html histroy api and routing libary changes
+the states and loads component on client side. sometimes if it require client app request data from server
+only data not pages, and loads new component on client side.
+---------------------------------------------------------------

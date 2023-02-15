@@ -1,12 +1,17 @@
 import axios from "axios";
 import { minify } from "csso";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect, Children } from "react";
 import ReactDOM from "react-dom/client";
 import "./../index.css";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 // import * as XYZ from "./components/Header";
 import HeaderComponent from "./components/Header";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import About from "./components/About";
+import Error from "./components/Error";
+import Contact from "./components/Contact";
+import RestaurantMenu from "./components/RestaurantMenu";
 // import Title from "./components/Header";
 // import Header from "./Header";
 // HMR- Hot Module Replacement
@@ -115,11 +120,11 @@ import HeaderComponent from "./components/Header";
 // Footer
 //      -links and copyright
 const styleObj = {
-    backgroundColor:'green',
-}
+  backgroundColor: "green",
+};
 const jsxHeading = (
-    // inline styling
-  <h1 id="title" style={{backgroundColor:'red'}}key="title key">
+  // inline styling
+  <h1 id="title" style={{ backgroundColor: "red" }} key="title key">
     expression aite direct curly brace
   </h1>
 );
@@ -138,70 +143,93 @@ const jsxHeading = (
 const string = "xyz";
 // const data =api.getData()
 
-
 // config driven UI
-const config =[
-    {
-        type:'corousal',
-    
-    cards:[
-       { offerName:'50% off'},
-       { offerName:'No Delivery Chaarges%'},
-    
-    ]
-},
-{
-    type:'restaurants',
+const config = [
+  {
+    type: "corousal",
 
-cards:[
-    {
-        name:'Shah gouse',
-        image: 'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/ks4d93rjtcbitkzkbqx0',
-        cuisine: ['Biryani', 'Hyderabadi'],
-        rating:"4.4",
-    }
-    , 
-    {
-        name:'Shah gouse',
-        image: 'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/ks4d93rjtcbitkzkbqx0',
-        cuisine: ['Biryani', 'Hyderabadi'],
-        rating:"4.4",
-    }
-    
+    cards: [{ offerName: "50% off" }, { offerName: "No Delivery Chaarges%" }],
+  },
+  {
+    type: "restaurants",
 
-]
-}
-]
+    cards: [
+      {
+        name: "Shah gouse",
+        image:
+          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/ks4d93rjtcbitkzkbqx0",
+        cuisine: ["Biryani", "Hyderabadi"],
+        rating: "4.4",
+      },
+      {
+        name: "Shah gouse",
+        image:
+          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/ks4d93rjtcbitkzkbqx0",
+        cuisine: ["Biryani", "Hyderabadi"],
+        rating: "4.4",
+      },
+    ],
+  },
+];
 
-
-const ShahGouse ={
-    name:'Shah gouse',
-    image: 'https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/ks4d93rjtcbitkzkbqx0',
-    cuisine: ['Biryani', 'Hyderabadi'],
-    rating:"4.4",
-}
-
+const ShahGouse = {
+  name: "Shah gouse",
+  image:
+    "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/ks4d93rjtcbitkzkbqx0",
+  cuisine: ["Biryani", "Hyderabadi"],
+  rating: "4.4",
+};
 
 //props === properties
 // no key <<<<<<<<<<<<<<<<< index key << unique key
-
+//SPA-single page application
+//Two routings-CLient side routing and server side routing
 const AppLayout = () => {
-
-
   return (
     //React.Fragment === component exported by react <React.Fragment/>===<></>
     //JSX expression must have only one parent component
     <React.Fragment>
       <HeaderComponent />
+      {/* <About />
       <Body />
+      <Contact />  */}
+      <Outlet />
       <Footer />
     </React.Fragment>
   );
 };
-
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+        errorElement: <Error />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+        errorElement: <Error />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+        errorElement: <Error />,
+      },
+      {
+        path: "/restaurant/:id",
+        element: <RestaurantMenu />,
+        errorElement: <Error />,
+      }
+    ],
+  },
+]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 // passing the react element inside the root
 // root.render(heading)
 // root.render(jsxHeading);
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);
 // root.render(<Header />);
