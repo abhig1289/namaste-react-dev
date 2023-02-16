@@ -12,6 +12,7 @@ import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
+import Profile from "./components/Profile";
 // import Title from "./components/Header";
 // import Header from "./Header";
 // HMR- Hot Module Replacement
@@ -213,6 +214,11 @@ const appRouter = createBrowserRouter([
         path: "/about",
         element: <About />,
         errorElement: <Error />,
+        children:[{
+          path: "profile",
+          element: <Profile />,
+          errorElement: <Error />,
+        }]
       },
       {
         path: "/contact",
