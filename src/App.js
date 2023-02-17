@@ -1,6 +1,6 @@
 import axios from "axios";
 import { minify } from "csso";
-import React, { useState, useEffect, Children } from "react";
+import React, { useState, useEffect, Children, lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./../index.css";
 import Body from "./components/Body";
@@ -8,11 +8,16 @@ import Footer from "./components/Footer";
 // import * as XYZ from "./components/Header";
 import HeaderComponent from "./components/Header";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import About from "./components/About";
+// import About from "./components/About";
 import Error from "./components/Error";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
+import Shimmer from "./components/Shimmer";
+const About = lazy(() => import("./components/About"));
+const InstaMart = lazy(() => import("./components/InstaMart"));
+//upon ondemandloading =>upon rendering=>suspend loading
+// import InstaMart from "./components/InstaMart";
 // import Title from "./components/Header";
 // import Header from "./Header";
 // HMR- Hot Module Replacement
@@ -212,13 +217,19 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <Suspense fallback={<h1>Loading....</h1>}>
+            <About />
+          </Suspense>
+        ),
         errorElement: <Error />,
-        children:[{
-          path: "profile",
-          element: <Profile />,
-          errorElement: <Error />,
-        }]
+        children: [
+          {
+            path: "profile",
+            element: <Profile />,
+            errorElement: <Error />,
+          },
+        ],
       },
       {
         path: "/contact",
@@ -229,7 +240,16 @@ const appRouter = createBrowserRouter([
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
         errorElement: <Error />,
-      }
+      },
+      {
+        path: "/instamart",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <InstaMart />
+          </Suspense>
+        ),
+        errorElement: <Error />,
+      },
     ],
   },
 ]);

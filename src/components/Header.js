@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/img/wildwest.jpg";
-
-const LoggedInUser = () => {
-  //API call to authente
-  return true;
-};
+import useOnline from "../utils/useOnline";
+//chunking
+//code Splitting
+//lazy loading
+//Dynamic bundling
+//On demand loading
+//Dynamic  importing
+// const LoggedInUser = () => {
+//   //API call to authente
+//   return true;
+// };
 const Title = () => (
   //   <h1 id="title" key="title key11">
   //  Daaaa Tinu
@@ -22,6 +28,7 @@ const Title = () => (
 const HeaderComponent = () => {
   const [titleName, setTitleName] = useState("Daa Tinu");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isOnline = useOnline();
   // console.log("render")
   return (
     <div className="header">
@@ -45,10 +52,13 @@ const HeaderComponent = () => {
             <Link to="/about">About</Link>
           </li>
           <li>
-          <Link to="/contact">
-            Contact</Link>
-            </li>
+            <Link to="/contact">Contact</Link>
+          </li>
+          <li>
+            <Link to="/instamart">instamart</Link>
+          </li>
           <li>Cart</li>
+          <li>{isOnline ? "online" : "offline"}</li>
         </ul>
       </div>
       {isLoggedIn ? (

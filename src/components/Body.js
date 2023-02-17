@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import { RestauranList } from "../constants";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
-
+import { filterData } from "../utils/Helper";
+import useRestaurant from "../utils/useRestaurant";
+import useOnline from "../utils/useOnline";
 const Body = () => {
   // what are react hooks , state ,useState
   //search texxt is a local state variable
@@ -12,12 +14,7 @@ const Body = () => {
   const [searchClicked, setSearchClicked] = useState("false");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
-  function filteData(searchInput, restaurants) {
-    const filterData = restaurants.filter((rest) =>
-      rest?.data?.name?.toLowerCase()?.includes(searchInput?.toLowerCase())
-    );
-    return filterData;
-  }
+
   // empty dependency array => once after render
   // dep arry [searchText] => once after initial render + everytime after redern (my searchText changes)
 
@@ -37,8 +34,15 @@ const Body = () => {
     //API Calls
     getRestaurants();
   }, []);
+
+  const isOnline = useOnline();
+  if (!isOnline) {
+    return <h1>Offline,Please check your internet</h1>;
+  }
+
   //not render anything or early return
   if (!allRestaurants) return null;
+
   // if (filteredRestaurants.length===0) return <h1>No restaurant matches the search....!!!</h1>;
   //Conditional rendering(no data shimmerUI , if Data actual UI)
   return allRestaurants.length === 0 ? (
@@ -63,7 +67,7 @@ const Body = () => {
             //     setSearchClicked("false")
             // }}
             //need to filter the data and  update the restaurants accordingly
-            const data = filteData(searchInput, allRestaurants);
+            const data = filterData(searchInput, allRestaurants);
             setFilteredRestaurants(data);
           }}
         >
@@ -80,8 +84,11 @@ const Body = () => {
         ) : (
           filteredRestaurants.map((restaurant, index) => {
             return (
-              <Link to={"/restaurant/" + restaurant.data.id} key={restaurant.data.id}>
-                <RestaurantCard {...restaurant.data}  />
+              <Link
+                to={"/restaurant/" + restaurant.data.id}
+                key={restaurant.data.id}
+              >
+                <RestaurantCard {...restaurant.data} />
               </Link>
             );
           })
