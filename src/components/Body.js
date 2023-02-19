@@ -49,17 +49,17 @@ const Body = () => {
     <Shimmer />
   ) : (
     <>
-      <div className="search-container">
+      <div className="search-container p-5 bg-blue-50 my-5 ">
         <input
           type="text"
-          className="search-input"
+          className="search-input  focus:bg-blue-50 m-2 p-2"
           placeholder="Search..."
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
         />
         {/* <h1> {searchClicked}</h1>  */}
         <button
-          className="search-btn"
+          className="search-btn p-2 m-2 text-white rounded-md bg-blue-800 hover:bg-slate-500"
           onClick={() => {
             // if(searchClicked=="false"){
             // setSearchClicked("true")}
@@ -74,7 +74,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="restaurant-list">
+      <div className="restaurant-list flex flex-wrap">
         {/* <RestaurantCard 
           // restaurant={RestauranList[0]}
           {...RestauranList[0].data}

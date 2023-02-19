@@ -21,7 +21,7 @@ const Title = () => (
       src={Logo}
       // src="http://wirally.com/wp-content/uploads/2019/01/3-daa-tinu.jpg"
       alt="logo"
-      className="logo"
+      className="h-28 p-2"
     />
   </a>
 );
@@ -31,7 +31,8 @@ const HeaderComponent = () => {
   const isOnline = useOnline();
   // console.log("render")
   return (
-    <div className="header">
+    // <div className="header">
+    <div className="flex justify-between bg-blue-250 shadow-gray-400 sm:bg-blue-50">
       {/* {jsxHeading}
           {Heading()}
           <Heading/> 
@@ -43,22 +44,22 @@ const HeaderComponent = () => {
       {/* <button onClick={()=>setTitleName("new food app")}>click button</button>
         <h1>{titleName}</h1> */}
       <div className="nav-items">
-        <ul>
+        <ul className="flex py-10">
           {" "}
-          <li>
+          <li className="px-2">
             <Link to="/">Home</Link>
           </li>{" "}
-          <li>
+          <li className="px-2">
             <Link to="/about">About</Link>
           </li>
-          <li>
+          <li className="px-2">
             <Link to="/contact">Contact</Link>
           </li>
-          <li>
+          <li className="px-2">
             <Link to="/instamart">instamart</Link>
           </li>
-          <li>Cart</li>
-          <li>{isOnline ? "online" : "offline"}</li>
+          <li className="px-2">Cart</li>
+          <li className="px-2">{isOnline ? "online" : "offline"}</li>
         </ul>
       </div>
       {isLoggedIn ? (
